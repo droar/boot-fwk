@@ -2,6 +2,7 @@ package com.droar.boot.fwk.base.service;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 import com.droar.boot.fwk.base.entity.AbstractEntity;
 
 /**
@@ -34,9 +35,9 @@ public interface GenericServiceBase<E extends AbstractEntity, ID extends Seriali
    * Find by id.
    *
    * @param id the id
-   * @return the e
+   * @return the Optional
    */
-  public E findById(ID id);
+  public Optional<E> findById(ID id);
 
   /**
    * Find all.

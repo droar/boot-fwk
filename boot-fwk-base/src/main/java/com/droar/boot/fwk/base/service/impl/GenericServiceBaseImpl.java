@@ -2,7 +2,6 @@ package com.droar.boot.fwk.base.service.impl;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.droar.boot.fwk.base.entity.AbstractEntity;
 import com.droar.boot.fwk.base.service.GenericRepository;
 import com.droar.boot.fwk.base.service.GenericServiceBase;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * The GenericServiceBaseImpl
@@ -22,7 +20,6 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * Instantiates a new generic service base.
  */
-@Slf4j
 public class GenericServiceBaseImpl<E extends AbstractEntity, ID extends Serializable, REPO extends GenericRepository<E, ID>>
     implements GenericServiceBase<E, ID, REPO> {
 
@@ -54,22 +51,11 @@ public class GenericServiceBaseImpl<E extends AbstractEntity, ID extends Seriali
 
   @Override
   @Transactional(readOnly = true)
-  public E findById(ID id) {
+  public Optional<E> findById(ID id) {
     Validate.notNull(id, VALIDATION_NOT_NULL + this.repo.getClass().getName());
-    E result = null;
 
-    // We search the object
-    Optional<E> optResult = this.getRepo().findById(id);
-
-    try {
-      // We recover it
-      result = optResult.get();
-    } catch (NoSuchElementException e) {
-      log.error("No existe el objeto con id " + id);
-      result = null;
-    }
-
-    return result;
+    // We search and return the object
+    return this.getRepo().findById(id);
   }
 
   @Override
