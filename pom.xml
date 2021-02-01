@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.droar</groupId>
+	<artifactId>boot-fwk</artifactId>
+
+	<version>0.0.1-RELEASE</version>
+	<packaging>pom</packaging>
+	<name>boot-fwk</name>
+
+	<description>Fwk with some userful utils and tools for boot projects(feel free expand)</description>
+
+	<modules>
+		<module>boot-fwk-base</module>
+	</modules>
+
+	<properties>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.source.version>11</java.source.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.target.version>11</java.target.version>
+
+		<!-- Repositories -->
+		<repository.droar.release>https://maven.pkg.github.com/droar/personal-repo/repository/</repository.droar.release>
+
+		<!-- Versioning -->
+		<java.version>11</java.version>
+		<maven.compiler.version>3.8.0</maven.compiler.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.release>${java.version}</maven.compiler.release>
+
+		<spring.boot.version>2.4.2</spring.boot.version> <!-- Try to mantain always the lattest spring boot version -->
+		<spring.plugin.core.version>2.0.0.RELEASE</spring.plugin.core.version>
+		<javax.servlet.version>2.5</javax.servlet.version>
+		<jawx.ri.version>2.3.3</jawx.ri.version>
+		<commons-collections4.version>4.4</commons-collections4.version>
+		<modelmapper.version>2.3.2</modelmapper.version>
+		<auth0.version>2.3.0</auth0.version>
+		<json.version>20180813</json.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.droar</groupId>
+				<artifactId>boot-fwk-base</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!-- Spring dependencies -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring.boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.spring.platform</groupId>
+				<artifactId>platform-bom</artifactId>
+				<version>Cairo-SR3</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<distributionManagement>
+		<!-- For stable releases. -->
+		<repository>
+			<id>personal-repo</id>
+			<name>Droar Stable Libraries</name>
+			<url>${repository.droar.release}</url>
+		</repository>
+	</distributionManagement>
+
+</project>
