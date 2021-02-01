@@ -7,7 +7,7 @@ import javax.persistence.MappedSuperclass;
  * 
  * Super clase sin definir ningÃºn atributo
  *
- * @author everis
+ * @author droar
  *
  */
 @MappedSuperclass
