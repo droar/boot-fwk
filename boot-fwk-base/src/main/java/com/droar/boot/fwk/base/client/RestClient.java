@@ -218,7 +218,7 @@ public class RestClient {
    * @param token the token
    * @param jsonPut the json put
    * @param pathParams the path params
-   * @param mpFilters the mapa filtros
+   * @param mpFilters the mp filters
    * @param resultClassDto the result class dto
    * @return the client response
    */
