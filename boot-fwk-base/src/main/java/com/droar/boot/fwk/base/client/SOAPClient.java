@@ -1,4 +1,4 @@
-package com.droar.boot.fwk.base.util;
+package com.droar.boot.fwk.base.client;
 
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 

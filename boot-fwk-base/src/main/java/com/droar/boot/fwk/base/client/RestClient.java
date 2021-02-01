@@ -1,7 +1,6 @@
-package com.droar.boot.fwk.base.util;
+package com.droar.boot.fwk.base.client;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -19,9 +18,9 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriComponentsBuilder;
-import com.auth0.jwt.Algorithm;
-import com.auth0.jwt.JWTSigner;
-import com.auth0.jwt.JWTSigner.Options;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTCreator;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.droar.boot.fwk.base.exception.ExceptionResponse;
 import com.droar.boot.fwk.base.exception.ResponseStatusException;
 import com.droar.boot.fwk.base.model.ClientResponse;
@@ -408,15 +407,16 @@ public class RestClient {
         // Secret Algorithm -> secret
         String SECRET_KEY = "2bb80d537b1da3e38bd30361aa855686bde0eacd7162fef6a25fe97bf527a25b";
 
-        JWTSigner signer = new JWTSigner(SECRET_KEY);
-
+        // Simple 512 algorithm
+        Algorithm algorithm = Algorithm.HMAC512(SECRET_KEY);
+        
         // we generate the claims
-        Map<String, Object> mpClaims = new HashMap<String, Object>();
-        mpClaims.put(TOKEN_ID, id);
-        mpClaims.put(TOKEN_ROLE, role);
-
+        JWTCreator.Builder builder = JWT.create()
+            .withClaim(TOKEN_ID, id)
+            .withClaim(TOKEN_ROLE, role);
+               
         // Then we sign it.
-        token = signer.sign(mpClaims, new Options().setAlgorithm(Algorithm.HS512));
+        token = builder.sign(algorithm);
 
       } catch (Exception exception) {
         log.error("error generating the token");

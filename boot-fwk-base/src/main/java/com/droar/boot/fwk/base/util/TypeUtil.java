@@ -1,11 +1,5 @@
 package com.droar.boot.fwk.base.util;
 
-/**
- * TypeUtil.java 07-abr-2015
- *
- * Copyright 2015 EVERIS S.L.U.
- */
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;

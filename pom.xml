@@ -35,12 +35,11 @@
 		<maven.compiler.release>${java.version}</maven.compiler.release>
 
 		<spring.boot.version>2.4.2</spring.boot.version> <!-- Try to mantain always the lattest spring boot version -->
-		<spring.plugin.core.version>2.0.0.RELEASE</spring.plugin.core.version>
 		<javax.servlet.version>2.5</javax.servlet.version>
 		<jawx.ri.version>2.3.3</jawx.ri.version>
 		<commons-collections4.version>4.4</commons-collections4.version>
 		<modelmapper.version>2.3.2</modelmapper.version>
-		<auth0.version>2.3.0</auth0.version>
+		<auth0.version>3.12.1</auth0.version>
 		<json.version>20180813</json.version>
 	</properties>
 
